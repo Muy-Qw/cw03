@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define FILE_1_PATH "../src/file_1.txt"
+#define FILE_2_PATH "../src/file_2.txt"
 
 #define MAX_LINE_LEN 1000
 
@@ -8,6 +10,15 @@ int compare_files(  FILE *file_1, FILE *file_2,
                     char *line_1, char *line_2, int *line_number )
 {
     // TODO: write your code here
+    while( fgets(line_1, MAX_LINE_LEN, file_1) != NULL && fgets(line_2, MAX_LINE_LEN, file_2) != NULL )
+    {
+        if( strcmp(line_1, line_2) != 0 )
+        {
+            return 1;
+        }
+        (*line_number)++;
+    }
+    return 0;
 }
 
 // DO NOT change the code below
